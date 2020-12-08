@@ -1,5 +1,7 @@
-import { Result as AntResult, Modal, Button } from 'antd'
+import { Result as AntResult, Modal, Button, Typography } from 'antd'
 import { SmileOutlined } from '@ant-design/icons'
+
+const { Paragraph } = Typography
 
 function Result({ link, modal }) {
   const handleCancel = () => {
@@ -13,9 +15,20 @@ function Result({ link, modal }) {
       <AntResult
         title="There You Go!"
         icon={<SmileOutlined />}
-        subTitle={`${link.past} has been shortened to: ${link.present}`}
+        subTitle={`${link.past} has been shortened to: `}
         extra={[
-          <Button type="primary" key="on-the-go" onClick={goToLink}>
+          <Paragraph
+            style={{ textAlign: 'center', fontWeight: 'bold' }}
+            copyable
+          >
+            {link.present}
+          </Paragraph>,
+          <Button
+            style={{ margin: '0 auto', display: 'block' }}
+            type="primary"
+            key="on-the-go"
+            onClick={goToLink}
+          >
             Go to Link
           </Button>,
         ]}
